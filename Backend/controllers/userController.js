@@ -25,7 +25,10 @@ async function handleSignInDetails(req,res){
 
     try{
         const token=await user.matchPasswordAndGenerateToken(email,password);
-        return res.cookie('token',token).redirect('/');
+        return res.cookie('token',token,{
+            httpOnly:true,
+            secure:false,
+            sameSite:"strict"}).redirect('/');
     }
     catch(error){
         return res.redirect('signin',{
