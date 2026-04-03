@@ -7,9 +7,10 @@ function createUserToken(user){
     const payload={
         _id:user._id,
         username:user.username,
-        email:user.email
+        email:user.email,
+        role:user.role
     }
-    const token=JWT.sign(payload,secret,{expiresIn:"1d"});
+    const token=JWT.sign(payload,secret,{expiresIn:"2d"});
     return token;
 }
 

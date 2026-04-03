@@ -9,14 +9,24 @@ function handleSignup(req,res){
 }
 
 async function handleSignUpDetails(req,res){
-    const {username,email,password}=req.body;
+    try {
+    const {username,email,password,role}=req.body;
 
     await user.create({
         username,
         password,
-        email
+        email,
+        role
     });
-    res.redirect('signin');
+    res.status(201).json({
+        message:'User registered succesfully',
+    });
+    }
+    catch(error){
+        res.status(500).json({
+            message:"error.message",
+        });
+    }
 }
 
 async function handleSignInDetails(req,res){

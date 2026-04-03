@@ -16,6 +16,11 @@ const userSchema= new Schema({
         type:String,
         required:true
     },
+    role: {
+        type: String,
+        enum: ["recruiter", "job_seeker"],
+        required: true
+    }
 },{timestamps:true});
 
 userSchema.pre('save',async function(next){

@@ -8,12 +8,13 @@ function Signup() {
   const [username,setUsername]=useState();
   const [pass,setPass]=useState();
   const [email,setEmail]=useState();
+  const [role,setRole]=useState();
 
 
 
   return (
     <>
-      <form className='flex flex-col gap-1 mt-30 ml-150 shadow-xl w-90 h-80 p-4'>
+      <form className='flex flex-col gap-1 mt-30 ml-150 shadow-xl w-90 h-90 p-4'>
           <h2 className='font-semibold text-xl mb-2 mt-2'> Register Here</h2>
           <input 
             type="text" 
@@ -37,6 +38,14 @@ function Signup() {
             required
             placeholder='Enter Password'
             onChange={()=>setPass(pass)}
+            className='p-1 text-lg rounded-md mb-2 w-70 border border-gray-400' 
+          />
+          <input 
+            type="text"
+            value={role}
+            required
+            placeholder='Enter Role (Recuiter/Jobseeker)'
+            onChange={()=>setPass(setRole)}
             className='p-1 text-lg rounded-md mb-2 w-70 border border-gray-400' 
           />
           <button type="submit"
