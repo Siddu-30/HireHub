@@ -1,4 +1,4 @@
-const {user} =require('../models/user');
+const user =require('../models/user');
 
 function handleSignin(req,res){
     return res.json('signin');
@@ -10,6 +10,7 @@ function handleSignup(req,res){
 
 async function handleSignUpDetails(req,res){
     try {
+        console.log("BODY:", req.body);
     const {username,email,password,role}=req.body;
 
     await user.create({
@@ -24,7 +25,7 @@ async function handleSignUpDetails(req,res){
     }
     catch(error){
         res.status(500).json({
-            message:"error.message",
+            message:error.message,
         });
     }
 }
@@ -35,15 +36,27 @@ async function handleSignInDetails(req,res){
 
     try{
         const token=await user.matchPasswordAndGenerateToken(email,password);
-        return res.cookie('token',token,{
-            httpOnly:true,
-            secure:false,
-            sameSite:"strict"}).redirect('/');
+        const foundUser = await user.findOne({ email }).select('-password');
+
+    return res.cookie('token', token, {
+      httpOnly: true,
+      secure: false,
+      sameSite: "strict"
+    }).status(200).json({
+      message: "Login successful",
+      token,
+      user: {
+        _id: foundUser._id,
+        email: foundUser.email,
+        role: foundUser.role,
+        username: foundUser.username
+      }
+    });
     }
     catch(error){
-        return res.redirect('signin',{
-            error:"Incorrect Email or Password",
-        });
+        return res.status(401).json({
+        message: "Incorrect Email or Password"
+    });
     }
 }
 

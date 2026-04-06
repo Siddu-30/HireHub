@@ -8,7 +8,11 @@ export default function Home() {
 
   useEffect(() => {
     API.get("/jobs")
-      .then((res) => setJobs(res.data.jobs.slice(0, 6)))// show few jobs
+      .then((res) => {
+      const jobsData = res.data?.jobs || res.data || [];
+
+      setJobs(jobsData.slice(0, 6));
+    })
       .catch((err) => console.error(err))
   }, []);
 
@@ -27,14 +31,14 @@ export default function Home() {
         <div className="flex justify-center gap-4 flex-wrap">
           <button
             onClick={() => navigate("/signup")}
-            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 cursor-pointer"
           >
             Get Started
           </button>
 
           <button
             onClick={() => navigate("/jobs")}
-            className="border px-6 py-2 rounded-lg hover:bg-gray-100"
+            className="border px-6 py-2 rounded-lg hover:bg-gray-100 cursor-pointer"
           >
             Browse Jobs
           </button>
@@ -56,7 +60,7 @@ export default function Home() {
             </p>
             <button
               onClick={() => navigate("/jobs")}
-              className="bg-green-500 text-white px-4 py-2 rounded"
+              className="bg-green-500 text-white px-4 py-2 rounded cursor-pointer"
             >
               Browse Jobs
             </button>
@@ -68,8 +72,8 @@ export default function Home() {
               Post jobs and find candidates.
             </p>
             <button
-              onClick={() => navigate("/signin")}
-              className="bg-purple-500 text-white px-4 py-2 rounded"
+              onClick={() => navigate("/recruiter/post-job")}
+              className="bg-purple-500 text-white px-4 py-2 rounded cursor-pointer"
             >
               Post a Job
             </button>
@@ -84,7 +88,7 @@ export default function Home() {
           Featured Jobs
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {/* <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {jobs.map((job) => (
             <div
               key={job._id}
@@ -101,7 +105,7 @@ export default function Home() {
               </button>
             </div>
           ))}
-        </div>
+        </div> */}
       </section>
 
       {/* 🚀 FEATURES */}
@@ -143,7 +147,7 @@ export default function Home() {
         </h2>
         <button
           onClick={() => navigate("/signup")}
-          className="bg-white text-blue-600 px-6 py-2 rounded-lg"
+          className="bg-white text-blue-600 px-6 py-2 rounded-lg cursor-pointer"
         >
           Join Now
         </button>

@@ -1,13 +1,13 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 export default function ProtectedRoute({ children, role }) {
   const user = JSON.parse(localStorage.getItem("user"));
+  const location = useLocation();
 
   if (!user) {
-    return <Navigate to="/signin" replace />;
+    return <Navigate to="/signin" state={{ from: location.pathname }} replace />;
   }
- // Here replace is to prevents user from going back to protected page using back button
- 
+
   if (role && user.role !== role) {
     return <Navigate to="/" replace />;
   }

@@ -6,7 +6,7 @@ export default function MyJobs() {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    API.get("/jobs/my").then((res) => setJobs(res.data));
+    API.get("/jobs/my-jobs").then((res) => setJobs(res.data));
   }, []);
 
   return (

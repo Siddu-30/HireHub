@@ -1,10 +1,10 @@
-const application=require('../models/application');
+const application  = require('../models/application');
 
 
 async function applyJob(req,res){
     
     const job= await application.create({
-        userId:req.user.id,
+        userId:req.user._id,
         jobId:req.params.id,
     });
     res.json(job);

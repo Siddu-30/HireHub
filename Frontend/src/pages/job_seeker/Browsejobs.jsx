@@ -10,7 +10,7 @@ export default function BrowseJobs() {
   }, []);
 
   const apply = async (id) => {
-    await API.post(`/applications/${id}`);
+    await API.post(`/application/${id}`);
     alert("Applied!");
   };
 

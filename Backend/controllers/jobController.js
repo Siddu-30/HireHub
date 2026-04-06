@@ -1,17 +1,17 @@
-const {job} = require('../models/job');
+const job = require('../models/job');
 
 async function handleNewJobs(req,res){
     try{
         const newJob = await job.create({
         ...req.body,
-        createdBy:req.user.id,
+        createdBy:req.user._id,
     });
 
     res.status(201).json(newJob);
     }
     catch(error){
         res.status(500).json({
-            message:"error.message",
+            message:error.message,
         });
     }
 }
@@ -32,7 +32,7 @@ async function getMyJobs(req,res){
         res.json(myJobs);
     }catch(err){
         res.status(500).json({
-            message:"err.message",
+            message:err.message,
         });
     }
 }

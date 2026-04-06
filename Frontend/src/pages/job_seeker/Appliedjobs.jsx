@@ -6,7 +6,7 @@ export default function AppliedJobs() {
   const [apps, setApps] = useState([]);
 
   useEffect(() => {
-    API.get("/applications/me").then((res) => setApps(res.data));
+    API.get("/application/me").then((res) => setApps(res.data));
   }, []);
 
   return (
