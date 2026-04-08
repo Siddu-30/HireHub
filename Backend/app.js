@@ -20,7 +20,10 @@ mongoose.connect(process.env.MONGO_URL)
 
 
 app.use(cors({
-    origin:"https://hire-hub-ochre.vercel.app",
+    origin: [
+    "http://localhost:5173",
+    "https://hire-hub-ochre.vercel.app"
+  ],
     credentials:true
 }));
 app.use(express.json());
