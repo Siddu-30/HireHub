@@ -88,7 +88,7 @@ export default function Home() {
           Featured Jobs
         </h2>
 
-        {/* <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {jobs.map((job) => (
             <div
               key={job._id}
@@ -99,13 +99,13 @@ export default function Home() {
 
               <button
                 onClick={() => navigate("/jobs")}
-                className="mt-3 text-blue-600"
+                className="mt-3 text-blue-600 cursor-pointer"
               >
                 View Details →
               </button>
             </div>
           ))}
-        </div> */}
+        </div>
       </section>
 
       {/* 🚀 FEATURES */}

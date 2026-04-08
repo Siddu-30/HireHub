@@ -1,13 +1,13 @@
 
 import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
-import JobSeekerSidebar from "../components/JobSeekerSidebar";
+import JobseekerSidebar from "../components/JobseekerSidebar";
 
 export default function JobSeekerLayout() {
   return (
     <div className="flex min-h-screen bg-gray-100">
       
-      <JobSeekerSidebar />
+      <JobseekerSidebar />
 
       <div className="flex-1 flex flex-col">
         <Header />

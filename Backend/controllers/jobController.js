@@ -28,7 +28,7 @@ async function getAllJobs(req,res){
 
 async function getMyJobs(req,res){
     try{
-        const myJobs=await job.find({createdBy:req.user.id});
+        const myJobs=await job.find({createdBy:req.user._id});
         res.json(myJobs);
     }catch(err){
         res.status(500).json({

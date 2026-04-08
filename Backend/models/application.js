@@ -13,4 +13,4 @@ const applicationSchema= new Schema({
 
 const application=model('application',applicationSchema);
 
-module.exports={application}
+module.exports=application

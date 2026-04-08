@@ -12,7 +12,7 @@ async function applyJob(req,res){
 
 async function getMyApplications(req,res){
 
-    const applications=await application.find({userId:req.user.id})
+    const applications=await application.find({userId:req.user._id})
     .populate('jobId');
     
     res.json(applications);

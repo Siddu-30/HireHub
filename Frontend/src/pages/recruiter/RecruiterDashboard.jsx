@@ -10,11 +10,11 @@ function RecruiterDashboard() {
   }, []);
 
   return (
-    <div>
-      <h2>My Jobs</h2>
+    <div className="flex flex-col gap-3">
+      <h2 className="font-bold text-2xl" >My Jobs</h2>
       {jobs.map((job) => (
-        <div key={job._id}>
-          <h3>{job.title}</h3>
+        <div key={job._id} className="flex font-semibold text-lg">
+          <h3>{job.title} - </h3>
           <p>{job.company}</p>
         </div>
       ))}

@@ -10,16 +10,18 @@ export default function BrowseJobs() {
   }, []);
 
   const apply = async (id) => {
-    await API.post(`/application/${id}`);
+    await API.post(`application/${id}`);
     alert("Applied!");
   };
 
   return (
-    <div>
+    <div  className="flex flex-col gap-3">
       {jobs.map((job) => (
-        <div key={job._id}>
-          <h3>{job.title}</h3>
-          <button onClick={() => apply(job._id)}>Apply</button>
+        <div key={job._id} className="m-2 flex flex-row">
+          <h3 className="font-semibold m-2">{job.title}</h3>
+          <button 
+          className="border border-black-500 w-30 rounded font-semibold text-lg p-2 cursor-pointer bg-green-300"
+          onClick={() => apply(job._id)}>Apply</button>
         </div>
       ))}
     </div>
